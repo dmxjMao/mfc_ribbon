@@ -90,6 +90,77 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	//pGBtn2->AddSubItem(new CMFCRibbonButton(ID_BUTTON8, _T("Item 3")));
 	pPanel1->Add(pGBtn2);
 
+	CMFCRibbonPanel* pG0Panel3 = pCate0->AddPanel(_T("abc"));
+	pG0Panel3->Add(new CMFCRibbonLabel(_T("缩进")));
+	CMFCRibbonEdit* pG0P3Spin = new CMFCRibbonEdit(ID_FILE_NEW, 60, _T("左："), 5);
+	pG0P3Spin->EnableSpinButtons(0, 99);
+	pG0P3Spin->SetEditText(_T("0字符"));
+	pG0Panel3->Add(pG0P3Spin);
+	
+
+	//我的类别2：工具栏
+	CMFCRibbonCategory* pCate2 = m_wndRibbonBar.AddCategory(_T("我的类别2"), IDB_WRITESMALL, IDB_WRITELARGE);
+	CMFCRibbonPanel* pC2Panel0 = pCate2->AddPanel(_T("Form Toolbar"));
+	pC2Panel0->AddToolBar(IDR_MAINFRAME_256); //工具栏设计时指定了id
+
+	CMFCRibbonPanel* pC2Panel1 = pCate2->AddPanel(_T("Manual Toolbar"));
+
+	CMFCRibbonButtonsGroup* pBtnGroup1 = new CMFCRibbonButtonsGroup;
+	pBtnGroup1->AddButton(new CMFCRibbonButton(ID_FILE_NEW, _T(""), 0));
+	pBtnGroup1->AddButton(new CMFCRibbonButton(ID_FILE_OPEN, _T(""), 1));
+	pBtnGroup1->AddButton(new CMFCRibbonButton(ID_FILE_NEW, _T(""), 2));
+	pBtnGroup1->AddButton(new CMFCRibbonButton(ID_FILE_OPEN, _T(""), 3));
+	CMFCRibbonEdit* pEdit = new CMFCRibbonEdit(2, 66);
+	pBtnGroup1->AddButton(pEdit);
+	pC2Panel1->Add(pBtnGroup1);
+
+	CMFCRibbonButtonsGroup* pBtnGroup2 = new CMFCRibbonButtonsGroup;
+	pBtnGroup2->AddButton(new CMFCRibbonButton(ID_FILE_NEW, _T(""), 0));
+	pBtnGroup2->AddButton(new CMFCRibbonButton(ID_FILE_OPEN, _T(""), 1));
+	pBtnGroup2->AddButton(new CMFCRibbonButton(ID_FILE_NEW, _T(""), 2));
+	CMenu m;
+	m.LoadMenu(IDR_Menu_Popup);
+	HMENU hm = m.GetSubMenu(0)->GetSafeHmenu();
+	CMFCRibbonButton* pG2Btn4 = new CMFCRibbonButton(ID_FILE_OPEN, _T(""), 3);
+	pG2Btn4->SetMenu(hm/*, TRUE是否分为两部分,文本右对齐*/);
+	pBtnGroup2->AddButton(pG2Btn4);
+	CMFCRibbonButton* pG2Btn5 = new CMFCRibbonButton(ID_FILE_NEW, _T(""), 5);
+	pG2Btn5->SetMenu(hm/*, TRUE是否分为两部分,文本右对齐*/);
+	pBtnGroup2->AddButton(pG2Btn5);
+	pC2Panel1->Add(pBtnGroup2);
+
+	CMFCRibbonPanel* pC2Pane3 = pCate2->AddPanel(_T("Other Control"));
+	CMFCRibbonUndoButton* pUndoBtn = new CMFCRibbonUndoButton(ID_FILE_NEW, _T("Undo"), 0);
+	for (int i = 0; i < 10; ++i) {
+		CString str;
+		str.Format(_T("Action %d"), i + 1);
+		pUndoBtn->AddUndoAction(str);
+	}
+	pC2Pane3->Add(pUndoBtn);
+	pC2Pane3->Add(new CMFCRibbonSeparator());
+	pC2Pane3->Add(new CMFCRibbonLabel(_T("哎呦不错哦！")/*, TRUE 是否多行*/));
+
+	pC2Pane3->Add(new CMFCRibbonLinkCtrl(ID_FILE_NEW, _T("aaa"), _T("mailto:920746980@qq.com")/*提示文本*/));//邮件、网页、启动程序。。
+
+	pC2Pane3->Add(new CMFCRibbonFontComboBox(ID_FILE_NEW));
+	CMFCRibbonComboBox* pCombo = new CMFCRibbonComboBox(ID_FILE_NEW, TRUE,40);
+	//pCombo->SetDropDownHeight(960);
+	pCombo->AddItem(_T("A"));
+	//pCombo->AddSubItem(new CMFCRibbonLabel(_T("哎呦不错哦！")/*, TRUE 是否多行*/));
+	pCombo->AddItem(_T("b"));
+	pCombo->AddItem(_T("c"));
+	pCombo->AddItem(_T("d"));
+	pCombo->AddItem(_T("e"));
+	pCombo->AddItem(_T("f"));
+	pCombo->AddItem(_T("g"));
+	pCombo->AddItem(_T("h"));
+	pCombo->AddItem(_T("i"));
+	pCombo->AddItem(_T("j"));
+	pCombo->AddItem(_T("k"));
+	pCombo->AddItem(_T("l"));
+
+	pC2Pane3->Add(pCombo);
+
 	if (!m_wndStatusBar.Create(this))
 	{
 		TRACE0("Failed to create status bar\n");

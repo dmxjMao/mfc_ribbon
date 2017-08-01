@@ -63,14 +63,18 @@
 #define ID_POPUP1_1ITEM2                32805
 #define ID_POPUP1_1ITEM3                32806
 #define ID_CHECK2                       32807
-#define ID_BUTTON11                     32810
+#define ID_SPIN3                        32811
+#define ID_BUTTON2                      32812
+#define ID_BUTTON3                      32813
+#define ID_COMBO4                       32814
+#define ID_BUTTON11                     32815
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        311
-#define _APS_NEXT_COMMAND_VALUE         32811
+#define _APS_NEXT_COMMAND_VALUE         32816
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
